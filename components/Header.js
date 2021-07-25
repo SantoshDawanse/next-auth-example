@@ -1,4 +1,13 @@
+import { signIn, signOut, useSession } from "next-auth/client";
+
 const Header = () => {
+
+  const [session] = useSession();
+
+  if (session) {
+    console.log(session);
+  }
+
   return (
     <header className="masthead mb-auto">
       <div className="inner">
@@ -7,7 +16,13 @@ const Header = () => {
           <a className="nav-link active" href="#">Home</a>
           <a className="nav-link" href="#">Features</a>
           <a className="nav-link" href="#">Contact</a>
-          <a className="btn btn-outline-primary mx-2" href="#">Login</a>
+          {
+            !session && <button className="btn btn-outline-primary mx-2" onClick={() => {signIn()}}>Login</button>
+          }
+          {
+            session && <button className="btn btn-outline-primary mx-2" onClick={() => {signOut()}}>Logout</button>
+          }
+          
         </nav>        
       </div>
     </header>
