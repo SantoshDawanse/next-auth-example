@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Footer from "./Footer"
 import Header from "./Header"
 
 const Layout = ({children}) => {
@@ -10,8 +11,11 @@ const Layout = ({children}) => {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossOrigin="anonymous" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      <main id="main">{ children }</main>
+      <main id="main" className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <Header />
+        {children}
+        <Footer />
+      </main>
     </>
   )
 }
